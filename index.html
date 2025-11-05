@@ -391,129 +391,696 @@
 
   // DOM取得 (既存の要素とFirebase関連の要素)
 const words = [
- { en: "reception", jp: "もてなし，歓迎会", sentence: "receive a warm _______", sentence_jp: "温かい歓迎を受ける（_______）" },
-{ en: "portion", jp: "食事の盛り", sentence: "a large _______ of roast beef", sentence_jp: "大盛りのローストビーフ（_______）" },
-{ en: "laundry", jp: "〈米〉洗濯", sentence: "cook, clean, and do the _______", sentence_jp: "料理，掃除，洗濯をする（_______）" },
-{ en: "nap", jp: "昼寝，仮眠", sentence: "I’ll just take a little _______", sentence_jp: "ちょっと_______をします" },
-{ en: "wake", jp: "目が覚める", sentence: "I woke up at six a.m., but did not get up. _______", sentence_jp: "午前6時に目が覚めたが，起きなかった．（_______）" },
-{ en: "vending machine", jp: "自動販売機", sentence: "a soft drink _______", sentence_jp: "清涼飲料水の_______" },
-{ en: "grocery", jp: "食料雑貨店", sentence: "a local _______ （store）", sentence_jp: "地元の食料雑貨店（_______）" },
-{ en: "appointment", jp: "病院などの予約，面会の約束", sentence: "I have an _______ to see the dentist at five", sentence_jp: "5時に歯医者の予約を入れている．（_______）" },
-{ en: "consult", jp: "～に相談する", sentence: "You’d better _______ your doctor", sentence_jp: "医者に診てもらいなさい．（_______）" },
-{ en: "register", jp: "～を登録する，記録する", sentence: "Koyasan is registered as a World Heritage Site. _______", sentence_jp: "高野山は世界遺産に登録されている．（_______）" },
-{ en: "dye", jp: "～を染める", sentence: "_______ my hair brown", sentence_jp: "髪を茶色に染める（_______）" },
-{ en: "subscribe", jp: "to", sentence: "_______ to the magazine", sentence_jp: "雑誌を定期購読する（_______）" },
-{ en: "guarantee", jp: "～を保証する", sentence: "Freedom of speech is guaranteed under the Constitution of Japan. _______", sentence_jp: "言論の自由は日本国憲法で保障されている．（_______）" },
-{ en: "wipe", jp: "～を拭く", sentence: "_______ the table", sentence_jp: "テーブルを拭く（_______）" },
-{ en: "sweep", jp: "床，地面を掃く", sentence: "_______ the floor with a broom", sentence_jp: "ほうきで_______を掃く" },
-{ en: "transfer", jp: "電車などを乗り換える", sentence: "_______ at Rome", sentence_jp: "ローマで乗り換える（_______）" },
-{ en: "divorce", jp: "離婚する", sentence: "They have divorced. _______", sentence_jp: "彼らは離婚した．（_______）" },
-{ en: "fate", jp: "運命，宿命", sentence: "A terrible _______ awaited them", sentence_jp: "恐ろしい_______が彼らを待ち受けていた" },
-{ en: "destiny", jp: "運命", sentence: "It was his _______ to save his nation", sentence_jp: "国を救うことが彼の_______だった" },
-{ en: "flavor", jp: "風味，味〈可算〉", sentence: "ice cream with a green tea _______", sentence_jp: "抹茶味のアイスクリーム（_______）" },
-{ en: "perfume", jp: "香り", sentence: "the _______ of roses", sentence_jp: "バラの香り（_______）" },
-{ en: "ingredient", jp: "料理などの材料", sentence: "the ingredients of lasagne _______", sentence_jp: "ラザニアの材料（_______）" },
-{ en: "bitter", jp: "苦い，つらい", sentence: "a _______ experience", sentence_jp: "つらい経験（_______）" },
-{ en: "aisle", jp: "通路", sentence: "prefer an _______ seat to a window seat", sentence_jp: "窓側の席より_______側の席のほうが好きだ" },
-{ en: "track", jp: "足跡，小道", sentence: "keep _______ of my schedule", sentence_jp: "スケジュール管理をする（スケジュールの経過を追う）（_______）" },
-{ en: "district", jp: "地区", sentence: "an election _______", sentence_jp: "選挙区（_______）" },
-{ en: "facility", jp: "施設，設備", sentence: "indoor sports facilities _______", sentence_jp: "室内スポーツ_______" },
-{ en: "height", jp: "高さ", sentence: "line up in order of _______", sentence_jp: "身長順に並ぶ（_______）" },
-{ en: "distant", jp: "遠い", sentence: "a _______[×far] island", sentence_jp: "_______島" },
-{ en: "locate", jp: "be", sentence: "New Mexico is located 2,240 meters above sea level. _______", sentence_jp: "ニューメキシコは海抜2,240メートルの位置にある．（_______）" },
-{ en: "occupy", jp: "～を占める", sentence: "_______ two seats on the train", sentence_jp: "電車で2つの席を占有する（_______）" },
-{ en: "surround", jp: "～を取り囲む，包囲する", sentence: "a mansion surrounded by red brick walls _______", sentence_jp: "赤れんがの塀に囲まれたお屋敷（_______）" },
-{ en: "classical", jp: "音楽，バレエ，ダンスなどでクラシックの", sentence: "_______[×classic] music", sentence_jp: "クラシック_______" },
-{ en: "civilization", jp: "文明", sentence: "an advanced _______", sentence_jp: "高度な_______" },
-{ en: "heritage", jp: "遺産", sentence: "the cultural _______ of Japan", sentence_jp: "日本の文化_______" },
-{ en: "script", jp: "台本，脚本", sentence: "a film _______", sentence_jp: "映画の_______" },
-{ en: "tale", jp: "話", sentence: "a Japanese folk _______", sentence_jp: "日本の民_______" },
-{ en: "literature", jp: "文学", sentence: "the Nobel Prize in _______", sentence_jp: "ノーベル文学賞（_______）" },
-{ en: "tragedy", jp: "悲劇〈可算〉", sentence: "9/11 was a terrible _______", sentence_jp: "9/11（の同時多発テロ）は本当に悲劇だった．（_______）" },
-{ en: "poetry", jp: "詩〈不可算〉", sentence: "learn a lot of _______ by heart
-◇learn a poem by heart", sentence_jp: "多くの詩を暗記する
-◇1つの詩を暗記する（_______）" },
-{ en: "biography", jp: "伝記", sentence: "a _______ of Helen Keller", sentence_jp: "ヘレン・ケラーの_______" },
-{ en: "term", jp: "用語，言葉", sentence: "the _______[×word] “digital native”", sentence_jp: "『デジタルネイティブ』という言葉（_______）" },
-{ en: "proverb", jp: "諺", sentence: "As the _______ goes[says], time flies", sentence_jp: "_______にもあるように，光陰矢の如しだ" },
-{ en: "dialect", jp: "方言", sentence: "speak in the Kansai _______", sentence_jp: "関西弁で話す（_______）" },
-{ en: "fluent", jp: "流暢な", sentence: "He speaks _______ Spanish.
-（＝He is _______ in Spanish.）", sentence_jp: "彼はスペイン語が流暢だ．（_______）" },
-{ en: "translate", jp: "～を翻訳する", sentence: "_______ a sentence literally", sentence_jp: "文を直訳する（文字どおりに文を訳す）（_______）" },
-{ en: "define", jp: "～を定義する", sentence: "Obesity is defined as a BMI of 30 or above. _______", sentence_jp: "肥満はBMI30以上と定義されている．（_______）" },
-{ en: "interpret", jp: "～を解釈する", sentence: "_______ his silence as a refusal", sentence_jp: "彼の沈黙を拒否と解釈する（_______）" },
-{ en: "quote", jp: "～を引用する", sentence: "_______ a passage from the Bible", sentence_jp: "聖書の一節を引用する（_______）" },
-{ en: "literally", jp: "文字どおりに", sentence: "The word bōnen-kai _______ means “a forget-the-year party.”", sentence_jp: "「忘年会」は_______は「年を忘れる会」を意味する" },
-{ en: "indicate", jp: "データなどが～を示す", sentence: "Research indicates that the medicine can be harmful to children. _______", sentence_jp: "研究はその薬が子どもに害があるかもしれないことを示している．（_______）" },
-{ en: "reveal", jp: "～を明らかにする，暴露する", sentence: "_______ a secret to her", sentence_jp: "彼女に秘密を漏らす（_______）" },
-{ en: "announce", jp: "～を発表する", sentence: "_______ the results of the election", sentence_jp: "選挙の結果を発表する（_______）" },
-{ en: "broadcast", jp: "～を放送する", sentence: "The interview with him was _______ live", sentence_jp: "彼のインタビューは生放送された．（_______）" },
-{ en: "prove", jp: "～を証明する", sentence: "_______ （that） it is false
-（＝_______ it （to be） false）", sentence_jp: "それが偽物だと証明する（_______）" },
-{ en: "advertise", jp: "～を宣伝する", sentence: "_______ the concert", sentence_jp: "コンサートを宣伝する（_______）" },
-{ en: "clarify", jp: "～を明らかにする", sentence: "Let me _______ my point", sentence_jp: "言いたいことを明確にします．（_______）" },
-{ en: "seek", jp: "～を求める", sentence: "_______ specialist advice", sentence_jp: "専門家の意見を求める（_______）" },
-{ en: "entertain", jp: "～を楽しませる", sentence: "_______ an audience", sentence_jp: "観客を楽しませる（_______）" },
-{ en: "amuse", jp: "～を楽しませる", sentence: "The clown amused us all. _______", sentence_jp: "そのピエロは私たちみんなを楽しませた．（_______）" },
-{ en: "attract", jp: "～を引きつける，魅了する", sentence: "The pop star’s marriage attracted media attention. _______", sentence_jp: "人気スターの結婚はマスコミの関心を引きつけた．（_______）" },
-{ en: "fascinate", jp: "～を魅了する，～にとても興味をもたせる", sentence: "I was fascinated by the Sagrada Familia. _______", sentence_jp: "サグラダ・ファミリアに魅了された．（_______）" },
-{ en: "absorb", jp: "be", sentence: "I was absorbed in a book. _______", sentence_jp: "私は本に夢中になっていた．（_______）" },
-{ en: "fond", jp: "be", sentence: "I am very _______ of ramen", sentence_jp: "私はラーメンが大好きだ．（_______）" },
-{ en: "scare", jp: "～を怯えさせる", sentence: "Oh!  You scared me! _______", sentence_jp: "もう，びっくりしたじゃない（あなたは私を怯えさせた）．（_______）" },
-{ en: "alarm", jp: "～をぎょっとさせる", sentence: "I was alarmed to hear a man shout. _______", sentence_jp: "男が叫ぶのを聞いて，ぎょっとした．（_______）" },
-{ en: "amaze", jp: "～を驚かせる", sentence: "Sam amazed me with his cooking skills. _______", sentence_jp: "サムはその料理の腕で私を驚かせた．（_______）" },
-{ en: "irritate", jp: "長期にわたって～をいらいらさせる", sentence: "Her habit of biting her nails irritates me. _______", sentence_jp: "彼女の爪をかむ癖は私をいらいらさせる．（_______）" },
-{ en: "upset", jp: "～を動揺させる", sentence: "The news _______ her", sentence_jp: "その知らせは彼女を動揺させた．（_______）" },
-{ en: "puzzle", jp: "～を当惑させる", sentence: "What puzzles me is why she can’t understand me. _______", sentence_jp: "私を当惑させるのは，なぜ彼女は私の言うことが理解できないかだ．（_______）" },
-{ en: "confuse", jp: "～を混乱させる，困惑させる", sentence: "His reply confused me. _______", sentence_jp: "彼の返答は私を困惑させた．（_______）" },
-{ en: "bore", jp: "～をうんざりさせる，退屈させる", sentence: "I was bored with his long speech. _______", sentence_jp: "彼の長い話にうんざりした．（_______）" },
-{ en: "frustrate", jp: "～を欲求不満にさせる", sentence: "I felt frustrated because I could not express myself well. _______", sentence_jp: "うまく表現できなくてもどかしい思いをした．（_______）" },
-{ en: "disappoint", jp: "～を失望させる", sentence: "I was disappointed with the soccer game. _______", sentence_jp: "サッカーの試合にがっかりした．（_______）" },
-{ en: "embarrass", jp: "～に恥ずかしい思いをさせる，困惑させる", sentence: "I was embarrassed about using the wrong fork at dinner. _______", sentence_jp: "夕食時，フォークを使い間違えて恥ずかしかった．（_______）" },
-{ en: "ashamed", jp: "恥ずかしい", sentence: "I’m _______ of hurting her feelings", sentence_jp: "彼女の気持ちを傷つけたことを恥じている．（_______）" },
-{ en: "uneasy", jp: "不安な，胸騒ぎがする", sentence: "feel _______ about living alone", sentence_jp: "ひとり暮らしは不安だ（_______）" },
-{ en: "hesitate", jp: "ためらう", sentence: "Please do not _______ to contact me if you have any questions", sentence_jp: "質問があればどうぞご遠慮なく連絡して（連絡するのをためらわないで）ください．（_______）" },
-{ en: "reluctant", jp: "to", sentence: "I was _______ to go with him", sentence_jp: "彼と一緒に行くのは気が進まなかった．（_______）" },
-{ en: "tremble", jp: "震える", sentence: "The little girl was trembling with fear. _______", sentence_jp: "その少女は恐怖で震えていた．（_______）" },
-{ en: "boast", jp: "自慢する", sentence: "_______ about how clever my son is", sentence_jp: "私の息子がどれほど賢いかを自慢する（_______）" },
-{ en: "jealous", jp: "of", sentence: "be _______ of his promotion", sentence_jp: "彼の昇進が妬ましい（_______）" },
-{ en: "envy", jp: "～を羨ましく思う", sentence: "_______ him for his wealth", sentence_jp: "財産のことで彼を羨ましく思う（_______）" },
-{ en: "yell", jp: "叫ぶ，大声をあげる", sentence: "_______ at the children to be quiet", sentence_jp: "子どもたちに静かにせよと𠮟る（大声で言う）（_______）" },
-{ en: "respect", jp: "人を尊敬する", sentence: "_______ Gandhi", sentence_jp: "ガンジーを尊敬する（_______）" },
-{ en: "despair", jp: "絶望", sentence: "a deep sense of _______", sentence_jp: "深い_______感" },
-{ en: "emotion", jp: "特に強い感情〈可算〉", sentence: "show my emotions _______", sentence_jp: "感情を表に出す（_______）" },
-{ en: "sympathy", jp: "同情", sentence: "have deep _______ for the victims", sentence_jp: "犠牲者たちに本当に同情する（_______）" },
-{ en: "shame", jp: "残念なこと", sentence: "It’s a _______ that you didn’t see that movie", sentence_jp: "あなたがその映画を見ていないのは残念です．（_______）" },
-{ en: "confidence", jp: "自信", sentence: "boost my _______", sentence_jp: "（私の）自信を高める（_______）" },
-{ en: "courage", jp: "勇気", sentence: "have the _______ to say no", sentence_jp: "断る_______を持つ" },
-{ en: "passion", jp: "情熱", sentence: "have a _______ for music", sentence_jp: "音楽への_______を持っている" },
-{ en: "sorrow", jp: "悲しみ", sentence: "experience the joys and sorrows of life _______", sentence_jp: "人生の苦楽を経験する（_______）" },
-{ en: "ignore", jp: "人，物を無視する", sentence: "completely _______ him", sentence_jp: "完全に彼を無視する（_______）" },
-{ en: "offend", jp: "人，物が～を怒らせる，～の気分を害する", sentence: "His jokes offended Irish people. _______", sentence_jp: "彼の冗談はアイルランドの_______たちを怒らせた" },
-{ en: "depress", jp: "～を憂うつにさせる，落ち込ませる", sentence: "The rainy weather depressed me. _______", sentence_jp: "雨天ですっかり気がめいってしまった（私を落ち込ませた）．（_______）" },
-{ en: "owe", jp: "A", sentence: "I _______ my success to him", sentence_jp: "私の成功は彼のおかげだ．（_______）" },
-{ en: "fear", jp: "恐怖", sentence: "overcome my _______ of snakes", sentence_jp: "ヘビに対する恐怖を克服する（_______）" },
-{ en: "method", jp: "方法", sentence: "a _______ for reducing stress", sentence_jp: "ストレスを減らすやり方（_______）" },
-{ en: "medium", jp: "情報伝達手段，媒体，メディア", sentence: "receive a great deal of media attention _______", sentence_jp: "メディアにとても注目される（_______）" },
-{ en: "means", jp: "手段〈単複同形〉", sentence: "a _______ of communication", sentence_jp: "意思疎通の手段（_______）" },
-{ en: "extent", jp: "程度", sentence: "You are correct to some _______", sentence_jp: "君はある_______正しい" },
-{ en: "extremely", jp: "極度に，非常に", sentence: "It’s _______ hot outside", sentence_jp: "外はひどく暑い．（_______）" },
-{ en: "total", jp: "全体の", sentence: "the _______ cost", sentence_jp: "総費用（_______）" },
-{ en: "largely", jp: "大部分は", sentence: "Our customers are _______ women", sentence_jp: "私たちのお客様は大部分が女性だ．（_______）" },
-{ en: "moderate", jp: "適度な，節度のある", sentence: "get _______ exercise", sentence_jp: "_______運動をする" },
-{ en: "somewhat", jp: "いくぶん", sentence: "feel _______ sad", sentence_jp: "_______悲しい気分だ" },
-{ en: "subtle", jp: "かすかな", sentence: "a _______ difference in meaning", sentence_jp: "_______意味の違い" },
-{ en: "possibly", jp: "ひょっとすると", sentence: "It will take two weeks, _______ longer", sentence_jp: "2週間，ひょっとしたらそれ以上かかるかもしれない．（_______）" },
-{ en: "eventually", jp: "最終的に，ついに", sentence: "After changing jobs many times, I _______ found a job in a bank", sentence_jp: "何度も転職を繰り返したあと，_______，銀行に就職しました" },
-{ en: "necessarily", jp: "not", sentence: "Rich people are not _______ happy", sentence_jp: "金持ちが必ずしも幸せとは限らない．（_______）" },
-{ en: "frankly", jp: "率直に", sentence: "talk _______ with a friend", sentence_jp: "友だちと_______話し合う" },
-{ en: "ironically", jp: "皮肉なことに", sentence: "_______, my car was stolen right in front of the police station", sentence_jp: "_______，私の車は警察署の真ん前で盗まれた" },
-{ en: "moreover", jp: "その上", sentence: "Smoking is bad for you.  _______, it costs a lot", sentence_jp: "喫煙は体に悪い．_______お金がかかる" },
-{ en: "otherwise", jp: "さもなければ", sentence: "Hurry up; _______ you’ll be late", sentence_jp: "急げ！さもないと遅れるぞ．（_______）" },
-{ en: "regardless", jp: "of", sentence: "_______ of gender, race, or nationality", sentence_jp: "性別，民族，国籍とは無関係に（_______）" },
-{ en: "worth", jp: "～の価値がある", sentence: "This ring is _______ over two million dollars", sentence_jp: "この指輪は200万ドル以上の価値がある．（_______）" },
-{ en: "according to", jp: "調査，人の話などによれば", sentence: "_______ a public poll", sentence_jp: "世論_______によると" },
-{ en: "despite", jp: "～にもかかわらず", sentence: "The soccer match was held, _______ the heavy rain", sentence_jp: "大雨にもかかわらず，そのサッカーの試合は行われた．（_______）" }
+  {
+    "en": "reception",
+    "jp": "もてなし，歓迎会",
+    "sentence": "receive a warm _______",
+    "sentence_jp": "温かい歓迎を受ける（_______）"
+  },
+  {
+    "en": "portion",
+    "jp": "食事の盛り",
+    "sentence": "a large _______ of roast beef",
+    "sentence_jp": "大盛りのローストビーフ（_______）"
+  },
+  {
+    "en": "laundry",
+    "jp": "〈米〉洗濯",
+    "sentence": "cook, clean, and do the _______",
+    "sentence_jp": "料理，掃除，洗濯をする（_______）"
+  },
+  {
+    "en": "nap",
+    "jp": "昼寝，仮眠",
+    "sentence": "I’ll just take a little _______",
+    "sentence_jp": "ちょっと_______をします"
+  },
+  {
+    "en": "wake",
+    "jp": "目が覚める",
+    "sentence": "I woke up at six a.m., but did not get up. _______",
+    "sentence_jp": "午前6時に目が覚めたが，起きなかった．（_______）"
+  },
+  {
+    "en": "vending machine",
+    "jp": "自動販売機",
+    "sentence": "a soft drink _______",
+    "sentence_jp": "清涼飲料水の_______"
+  },
+  {
+    "en": "grocery",
+    "jp": "食料雑貨店",
+    "sentence": "a local _______ （store）",
+    "sentence_jp": "地元の食料雑貨店（_______）"
+  },
+  {
+    "en": "appointment",
+    "jp": "病院などの予約，面会の約束",
+    "sentence": "I have an _______ with the dentist at five",
+    "sentence_jp": "5時に歯医者の予約を入れている．（_______）"
+  },
+  {
+    "en": "consult",
+    "jp": "～に相談する",
+    "sentence": "You’d better _______ your doctor",
+    "sentence_jp": "医者に診てもらいなさい．（_______）"
+  },
+  {
+    "en": "register",
+    "jp": "～を登録する，記録する",
+    "sentence": "Koyasan is _______ as a World Heritage Site.",
+    "sentence_jp": "高野山は世界遺産に登録されている．（_______）"
+  },
+  {
+    "en": "dye",
+    "jp": "～を染める",
+    "sentence": "_______ my hair brown",
+    "sentence_jp": "髪を茶色に染める（_______）"
+  },
+  {
+    "en": "subscribe",
+    "jp": "to",
+    "sentence": "_______ to the magazine",
+    "sentence_jp": "雑誌を定期購読する（_______）"
+  },
+  {
+    "en": "guarantee",
+    "jp": "～を保証する",
+    "sentence": "Freedom of speech is guaranteed under the Constitution of Japan. _______",
+    "sentence_jp": "言論の自由は日本国憲法で保障されている．（_______）"
+  },
+  {
+    "en": "wipe",
+    "jp": "～を拭く",
+    "sentence": "_______ the table",
+    "sentence_jp": "テーブルを拭く（_______）"
+  },
+  {
+    "en": "sweep",
+    "jp": "床，地面を掃く",
+    "sentence": "_______ the floor with a broom",
+    "sentence_jp": "ほうきで_______を掃く"
+  },
+  {
+    "en": "transfer",
+    "jp": "電車などを乗り換える",
+    "sentence": "_______ at Rome",
+    "sentence_jp": "ローマで乗り換える（_______）"
+  },
+  {
+    "en": "divorce",
+    "jp": "離婚する",
+    "sentence": "They have divorced. _______",
+    "sentence_jp": "彼らは離婚した．（_______）"
+  },
+  {
+    "en": "fate",
+    "jp": "運命，宿命",
+    "sentence": "A terrible _______ awaited them",
+    "sentence_jp": "恐ろしい_______が彼らを待ち受けていた"
+  },
+  {
+    "en": "destiny",
+    "jp": "運命",
+    "sentence": "It was his _______ to save his nation",
+    "sentence_jp": "国を救うことが彼の_______だった"
+  },
+  {
+    "en": "flavor",
+    "jp": "風味，味〈可算〉",
+    "sentence": "ice cream with a green tea _______",
+    "sentence_jp": "抹茶味のアイスクリーム（_______）"
+  },
+  {
+    "en": "perfume",
+    "jp": "香り",
+    "sentence": "the _______ of roses",
+    "sentence_jp": "バラの香り（_______）"
+  },
+  {
+    "en": "ingredient",
+    "jp": "料理などの材料",
+    "sentence": "the ingredients of lasagne _______",
+    "sentence_jp": "ラザニアの材料（_______）"
+  },
+  {
+    "en": "bitter",
+    "jp": "苦い，つらい",
+    "sentence": "a _______ experience",
+    "sentence_jp": "つらい経験（_______）"
+  },
+  {
+    "en": "aisle",
+    "jp": "通路",
+    "sentence": "prefer an _______ seat to a window seat",
+    "sentence_jp": "窓側の席より_______側の席のほうが好きだ"
+  },
+  {
+    "en": "track",
+    "jp": "足跡，小道",
+    "sentence": "keep _______ of my schedule",
+    "sentence_jp": "スケジュール管理をする（スケジュールの経過を追う）（_______）"
+  },
+  {
+    "en": "district",
+    "jp": "地区",
+    "sentence": "an election _______",
+    "sentence_jp": "選挙区（_______）"
+  },
+  {
+    "en": "facility",
+    "jp": "施設，設備",
+    "sentence": "indoor sports facilities _______",
+    "sentence_jp": "室内スポーツ_______"
+  },
+  {
+    "en": "height",
+    "jp": "高さ",
+    "sentence": "line up in order of _______",
+    "sentence_jp": "身長順に並ぶ（_______）"
+  },
+  {
+    "en": "distant",
+    "jp": "遠い",
+    "sentence": "a _______[×far] island",
+    "sentence_jp": "_______島"
+  },
+  {
+    "en": "locate",
+    "jp": "be",
+    "sentence": "New Mexico is located 2,240 meters above sea level. _______",
+    "sentence_jp": "ニューメキシコは海抜2,240メートルの位置にある．（_______）"
+  },
+  {
+    "en": "occupy",
+    "jp": "～を占める",
+    "sentence": "_______ two seats on the train",
+    "sentence_jp": "電車で2つの席を占有する（_______）"
+  },
+  {
+    "en": "surround",
+    "jp": "～を取り囲む，包囲する",
+    "sentence": "a mansion surrounded by brick walls _______",
+    "sentence_jp": "赤れんがの塀に囲まれたお屋敷（_______）"
+  },
+  {
+    "en": "classical",
+    "jp": "音楽，バレエ，ダンスなどでクラシックの",
+    "sentence": "_______[×classic] music",
+    "sentence_jp": "クラシック_______"
+  },
+  {
+    "en": "civilization",
+    "jp": "文明",
+    "sentence": "an advanced _______",
+    "sentence_jp": "高度な_______"
+  },
+  {
+    "en": "heritage",
+    "jp": "遺産",
+    "sentence": "the cultural _______ of Japan",
+    "sentence_jp": "日本の文化_______"
+  },
+  {
+    "en": "script",
+    "jp": "台本，脚本",
+    "sentence": "a film _______",
+    "sentence_jp": "映画の_______"
+  },
+  {
+    "en": "tale",
+    "jp": "話",
+    "sentence": "a Japanese folk _______",
+    "sentence_jp": "日本の民_______"
+  },
+  {
+    "en": "literature",
+    "jp": "文学",
+    "sentence": "the Nobel Prize in _______",
+    "sentence_jp": "ノーベル文学賞（_______）"
+  },
+  {
+    "en": "tragedy",
+    "jp": "悲劇〈可算〉",
+    "sentence": "9/11 was a terrible _______",
+    "sentence_jp": "9/11（の同時多発テロ）は本当に悲劇だった．（_______）"
+  },
+  {
+    "en": "poetry",
+    "jp": "詩〈不可算〉",
+    "sentence": "learn a lot of _______ by heart",
+    "sentence_jp": "多くの詩を暗記する"
+  },
+  {
+    "en": "biography",
+    "jp": "伝記",
+    "sentence": "a _______ of Helen Keller",
+    "sentence_jp": "ヘレン・ケラーの_______"
+  },
+  {
+    "en": "term",
+    "jp": "用語，言葉",
+    "sentence": "the _______[×word] “digital native”",
+    "sentence_jp": "『デジタルネイティブ』という言葉（_______）"
+  },
+  {
+    "en": "proverb",
+    "jp": "諺",
+    "sentence": "As the _______ goes[says], time flies",
+    "sentence_jp": "_______にもあるように，光陰矢の如しだ"
+  },
+  {
+    "en": "dialect",
+    "jp": "方言",
+    "sentence": "speak in the Kansai _______",
+    "sentence_jp": "関西弁で話す（_______）"
+  },
+  {
+    "en": "interpret",
+    "jp": "～を解釈する",
+    "sentence": "_______ his silence as a refusal",
+    "sentence_jp": "彼の沈黙を拒否と解釈する（_______）"
+  },
+  {
+    "en": "quote",
+    "jp": "～を引用する",
+    "sentence": "_______ a passage from the Bible",
+    "sentence_jp": "聖書の一節を引用する（_______）"
+  },
+  {
+    "en": "literally",
+    "jp": "文字どおりに",
+    "sentence": "The word bōnen-kai literally means “year-end party.” _______",
+    "sentence_jp": "「忘年会」は_______は「年を忘れる会」を意味する"
+  },
+  {
+    "en": "indicate",
+    "jp": "データなどが～を示す",
+    "sentence": "Research indicates that the drug may harm children. _______",
+    "sentence_jp": "研究はその薬が子どもに害があるかもしれないことを示している．（_______）"
+  },
+  {
+    "en": "reveal",
+    "jp": "～を明らかにする，暴露する",
+    "sentence": "_______ a secret to her",
+    "sentence_jp": "彼女に秘密を漏らす（_______）"
+  },
+  {
+    "en": "announce",
+    "jp": "～を発表する",
+    "sentence": "_______ the results of the election",
+    "sentence_jp": "選挙の結果を発表する（_______）"
+  },
+  {
+    "en": "broadcast",
+    "jp": "～を放送する",
+    "sentence": "The interview with him was _______ live",
+    "sentence_jp": "彼のインタビューは生放送された．（_______）"
+  },
+  {
+    "en": "prove",
+    "jp": "～を証明する",
+    "sentence": "_______ （that） it is false",
+    "sentence_jp": "それが偽物だと証明する（_______）"
+  },
+  {
+    "en": "advertise",
+    "jp": "～を宣伝する",
+    "sentence": "_______ the concert",
+    "sentence_jp": "コンサートを宣伝する（_______）"
+  },
+  {
+    "en": "clarify",
+    "jp": "～を明らかにする",
+    "sentence": "Let me _______ my point",
+    "sentence_jp": "言いたいことを明確にします．（_______）"
+  },
+  {
+    "en": "seek",
+    "jp": "～を求める",
+    "sentence": "_______ specialist advice",
+    "sentence_jp": "専門家の意見を求める（_______）"
+  },
+  {
+    "en": "entertain",
+    "jp": "～を楽しませる",
+    "sentence": "_______ an audience",
+    "sentence_jp": "観客を楽しませる（_______）"
+  },
+  {
+    "en": "amuse",
+    "jp": "～を楽しませる",
+    "sentence": "Sam amazed me with his cooking skills. _______",
+    "sentence_jp": "サムはその料理の腕で私を驚かせた．（_______）"
+  },
+  {
+    "en": "attract",
+    "jp": "引きつける，魅了する",
+    "sentence": "The pop star’s marriage attracted media attention. _______",
+    "sentence_jp": "人気スターの結婚はマスコミの関心を引きつけた．（_______）"
+  },
+  {
+    "en": "fascinate",
+    "jp": "～を魅了する，～にとても興味をもたせる",
+    "sentence": "I was fascinated by the Sagrada Familia. _______",
+    "sentence_jp": "サグラダ・ファミリアに魅了された．（_______）"
+  },
+  {
+    "en": "absorb",
+    "jp": "be",
+    "sentence": "I was absorbed in a book. _______",
+    "sentence_jp": "私は本に夢中になっていた．（_______）"
+  },
+  {
+    "en": "fond",
+    "jp": "be",
+    "sentence": "I am very _______ of ramen",
+    "sentence_jp": "私はラーメンが大好きだ．（_______）"
+  },
+  {
+    "en": "scare",
+    "jp": "～を怯えさせる",
+    "sentence": "Oh!  You scared me! _______",
+    "sentence_jp": "もう，びっくりしたじゃない（あなたは私を怯えさせた）．（_______）"
+  },
+  {
+    "en": "alarm",
+    "jp": "～をぎょっとさせる",
+    "sentence": "I was alarmed to hear a man shout. _______",
+    "sentence_jp": "男が叫ぶのを聞いて，ぎょっとした．（_______）"
+  },
+  {
+    "en": "amaze",
+    "jp": "～を驚かせる",
+    "sentence": "Sam amazed me with his cooking skills. _______",
+    "sentence_jp": "サムはその料理の腕で私を驚かせた．（_______）"
+  },
+  {
+    "en": "irritate",
+    "jp": "長期にわたって～をいらいらさせる",
+    "sentence": "Her habit of biting her nails irritates me. _______",
+    "sentence_jp": "彼女の爪をかむ癖は私をいらいらさせる．（_______）"
+  },
+  {
+    "en": "upset",
+    "jp": "～を動揺させる",
+    "sentence": "The news _______ her",
+    "sentence_jp": "その知らせは彼女を動揺させた．（_______）"
+  },
+  {
+    "en": "puzzle",
+    "jp": "～を当惑させる",
+    "sentence": "What puzzles me is why she can’t understand what I say. _______",
+    "sentence_jp": "私を当惑させるのは，なぜ彼女は私の言うことが理解できないかだ．（_______）"
+  },
+  {
+    "en": "confuse",
+    "jp": "～を混乱させる，困惑させる",
+    "sentence": "His reply confused me. _______",
+    "sentence_jp": "彼の返答は私を困惑させた．（_______）"
+  },
+  {
+    "en": "bore",
+    "jp": "～をうんざりさせる，退屈させる",
+    "sentence": "I was bored with his long speech. _______",
+    "sentence_jp": "彼の長い話にうんざりした．（_______）"
+  },
+  {
+    "en": "frustrate",
+    "jp": "～を欲求不満にさせる",
+    "sentence": "I felt frustrated that I couldn't express myself well. _______",
+    "sentence_jp": "うまく表現できなくてもどかしい思いをした．（_______）"
+  },
+  {
+    "en": "disappoint",
+    "jp": "～を失望させる",
+    "sentence": "I was disappointed with the soccer game. _______",
+    "sentence_jp": "サッカーの試合にがっかりした．（_______）"
+  },
+  {
+    "en": "embarrass",
+    "jp": "～に恥ずかしい思いをさせる，困惑させる",
+    "sentence": "I was embarrassed at dinner. _______",
+    "sentence_jp": "夕食時，フォークを使い間違えて恥ずかしかった．（_______）"
+  },
+  {
+    "en": "ashamed",
+    "jp": "恥ずかしい",
+    "sentence": "I’m _______ of hurting her feelings",
+    "sentence_jp": "彼女の気持ちを傷つけたことを恥じている．（_______）"
+  },
+  {
+    "en": "hesitate",
+    "jp": "ためらう",
+    "sentence": "Please do not _______ to contact me if you have any questions",
+    "sentence_jp": "質問があればどうぞご遠慮なく連絡して（連絡するのをためらわないで）ください．（_______）"
+  },
+  {
+    "en": "reluctant",
+    "jp": "to",
+    "sentence": "I was _______ to go with him",
+    "sentence_jp": "彼と一緒に行くのは気が進まなかった．（_______）"
+  },
+  {
+    "en": "tremble",
+    "jp": "震える",
+    "sentence": "The little girl was trembling with fear. _______",
+    "sentence_jp": "その少女は恐怖で震えていた．（_______）"
+  },
+  {
+    "en": "boast",
+    "jp": "自慢する",
+    "sentence": "_______ about how clever my son is",
+    "sentence_jp": "私の息子がどれほど賢いかを自慢する（_______）"
+  },
+  {
+    "en": "jealous",
+    "jp": "of",
+    "sentence": "be _______ of his promotion",
+    "sentence_jp": "彼の昇進が妬ましい（_______）"
+  },
+  {
+    "en": "envy",
+    "jp": "～を羨ましく思う",
+    "sentence": "_______ him for his wealth",
+    "sentence_jp": "財産のことで彼を羨ましく思う（_______）"
+  },
+  {
+    "en": "yell",
+    "jp": "叫ぶ，大声をあげる",
+    "sentence": "_______ at the children to be quiet",
+    "sentence_jp": "子どもたちに静かにせよと𠮟る（大声で言う）（_______）"
+  },
+  {
+    "en": "respect",
+    "jp": "人を尊敬する",
+    "sentence": "_______ Gandhi",
+    "sentence_jp": "ガンジーを尊敬する（_______）"
+  },
+  {
+    "en": "despair",
+    "jp": "絶望",
+    "sentence": "a deep sense of _______",
+    "sentence_jp": "深い_______感"
+  },
+  {
+    "en": "emotion",
+    "jp": "特に強い感情〈可算〉",
+    "sentence": "show my emotions _______",
+    "sentence_jp": "感情を表に出す（_______）"
+  },
+  {
+    "en": "sympathy",
+    "jp": "同情",
+    "sentence": "have deep _______ for the victims",
+    "sentence_jp": "犠牲者たちに本当に同情する（_______）"
+  },
+  {
+    "en": "shame",
+    "jp": "残念なこと",
+    "sentence": "It’s a _______ that you didn’t see that movie",
+    "sentence_jp": "あなたがその映画を見ていないのは残念です．（_______）"
+  },
+  {
+    "en": "confidence",
+    "jp": "自信",
+    "sentence": "boost my _______",
+    "sentence_jp": "（私の）自信を高める（_______）"
+  },
+  {
+    "en": "courage",
+    "jp": "勇気",
+    "sentence": "have the _______ to say no",
+    "sentence_jp": "断る_______を持つ"
+  },
+  {
+    "en": "passion",
+    "jp": "情熱",
+    "sentence": "have a _______ for music",
+    "sentence_jp": "音楽への_______を持っている"
+  },
+  {
+    "en": "sorrow",
+    "jp": "悲しみ",
+    "sentence": "experience the joys and sorrows of life _______",
+    "sentence_jp": "人生の苦楽を経験する（_______）"
+  },
+  {
+    "en": "ignore",
+    "jp": "人，物を無視する",
+    "sentence": "completely _______ him",
+    "sentence_jp": "完全に彼を無視する（_______）"
+  },
+  {
+    "en": "offend",
+    "jp": "人，物が～を怒らせる，～の気分を害する",
+    "sentence": "His jokes offended Irish people. _______",
+    "sentence_jp": "彼の冗談はアイルランドの_______たちを怒らせた"
+  },
+  {
+    "en": "depress",
+    "jp": "～を憂うつにさせる，落ち込ませる",
+    "sentence": "The rainy weather depressed me. _______",
+    "sentence_jp": "雨天ですっかり気がめいってしまった（私を落ち込ませた）．（_______）"
+  },
+  {
+    "en": "owe",
+    "jp": "A",
+    "sentence": "I _______ my success to him",
+    "sentence_jp": "私の成功は彼のおかげだ．（_______）"
+  },
+  {
+    "en": "fear",
+    "jp": "恐怖",
+    "sentence": "overcome my _______ of snakes",
+    "sentence_jp": "ヘビに対する恐怖を克服する（_______）"
+  },
+  {
+    "en": "method",
+    "jp": "方法",
+    "sentence": "a _______ for reducing stress",
+    "sentence_jp": "ストレスを減らすやり方（_______）"
+  },
+  {
+    "en": "medium",
+    "jp": "情報伝達手段，媒体，メディア",
+    "sentence": "receive a great deal of media attention _______",
+    "sentence_jp": "メディアにとても注目される（_______）"
+  },
+  {
+    "en": "means",
+    "jp": "手段〈単複同形〉",
+    "sentence": "a _______ of communication",
+    "sentence_jp": "意思疎通の手段（_______）"
+  },
+  {
+    "en": "extent",
+    "jp": "程度",
+    "sentence": "You are correct to some _______",
+    "sentence_jp": "君はある_______正しい"
+  },
+  {
+    "en": "extremely",
+    "jp": "極度に，非常に",
+    "sentence": "It’s _______ hot outside",
+    "sentence_jp": "外はひどく暑い．（_______）"
+  },
+  {
+    "en": "total",
+    "jp": "全体の",
+    "sentence": "the _______ cost",
+    "sentence_jp": "総費用（_______）"
+  },
+  {
+    "en": "largely",
+    "jp": "大部分は",
+    "sentence": "Our customers are _______ women",
+    "sentence_jp": "私たちのお客様は大部分が女性だ．（_______）"
+  },
+  {
+    "en": "moderate",
+    "jp": "適度な，節度のある",
+    "sentence": "get _______ exercise",
+    "sentence_jp": "_______運動をする"
+  },
+  {
+    "en": "somewhat",
+    "jp": "いくぶん",
+    "sentence": "feel _______ sad",
+    "sentence_jp": "_______悲しい気分だ"
+  },
+  {
+    "en": "subtle",
+    "jp": "かすかな",
+    "sentence": "a _______ difference in meaning",
+    "sentence_jp": "_______意味の違い"
+  },
+  {
+    "en": "possibly",
+    "jp": "ひょっとすると",
+    "sentence": "It will take two weeks, possibly longer _______",
+    "sentence_jp": "2週間，ひょっとしたらそれ以上かかるかもしれない．（_______）"
+  },
+  {
+    "en": "eventually",
+    "jp": "最終的に，ついに",
+    "sentence": "After changing jobs many times, I eventually got a job in a bank",
+    "sentence_jp": "何度も転職を繰り返したあと，_______，銀行に就職しました"
+  },
+  {
+    "en": "necessarily",
+    "jp": "not",
+    "sentence": "Rich people are not _______ happy",
+    "sentence_jp": "金持ちが必ずしも幸せとは限らない．（_______）"
+  },
+  {
+    "en": "frankly",
+    "jp": "率直に",
+    "sentence": "talk _______ with a friend",
+    "sentence_jp": "友だちと_______話し合う"
+  },
+  {
+    "en": "ironically",
+    "jp": "皮肉なことに",
+    "sentence": "_______, my car was stolen in front of the police station",
+    "sentence_jp": "_______，私の車は警察署の真ん前で盗まれた"
+  },
+  {
+    "en": "moreover",
+    "jp": "その上",
+    "sentence": "Smoking is bad for you. ________, it costs a lot",
+    "sentence_jp": "喫煙は体に悪い．_______お金がかかる"
+  },
+  {
+    "en": "otherwise",
+    "jp": "さもなければ",
+    "sentence": "Hurry up; _______ you’ll be late",
+    "sentence_jp": "急げ！さもないと遅れるぞ．（_______）"
+  },
+  {
+    "en": "regardless",
+    "jp": "of",
+    "sentence": "_______ of gender, race, or nationality",
+    "sentence_jp": "性別，民族，国籍とは無関係に（_______）"
+  },
+  {
+    "en": "worth",
+    "jp": "～の価値がある",
+    "sentence": "This ring is _______ over two million dollars",
+    "sentence_jp": "この指輪は200万ドル以上の価値がある．（_______）"
+  },
+  {
+    "en": "according to",
+    "jp": "調査，人の話などによれば",
+    "sentence": "_______ a public poll",
+    "sentence_jp": "世論_______によると"
+  },
+  {
+    "en": "despite",
+    "jp": "～にもかかわらず",
+    "sentence": "The soccer match was held _______ the heavy rain",
+    "sentence_jp": "大雨にもかかわらず，そのサッカーの試合は行われた．（_______）"
+  }
 ];
   const nameInput = document.getElementById("playerName");
   const firebaseStartBtn = document.getElementById("firebaseStartBtn"); // Firebase用のスタートボタン
@@ -766,6 +1333,7 @@ const words = [
 </script>
  </body>
 </html>
+
 
 
 
